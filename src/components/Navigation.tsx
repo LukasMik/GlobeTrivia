@@ -4,7 +4,7 @@ import '../styles/navigation.scss'
 
 const Navigation = () => {
     const location = useLocation();
-    console.log(location.pathname)
+
     return (
         <nav className={location.pathname === '/' ? 'nav-home-page' : 'nav-default'}>
             <ul>
