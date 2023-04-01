@@ -1,9 +1,15 @@
 .nav-home-page {
   @apply absolute top-1/2 w-full flex items-center justify-center z-10;
   ul {
-    @apply flex items-center gap-8;
+    @apply flex items-center justify-center w-1/2 gap-8;
+    li {
+      @apply w-36 text-center;
+    }
     & li:first-child {
       @apply hidden
+    }
+    a {
+      @apply transform hover:scale-110 transition-all hover:font-bold;
     }
   }
 }
