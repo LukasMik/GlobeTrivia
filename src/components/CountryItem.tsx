@@ -11,11 +11,9 @@ const CountryItem = ({item}: any) => {
                 Authorization: 'k403MNKTY3Wn8DU8NYgJdULOqXXyUcmXor4mkdogpqg66HqbiZNtgGS0',
             },
         })
-
     const {isLoading, isError, error, data} = useQuery(['country-image', item.name.common], fetchImage, {
         select: (data) => data?.data?.photos?.[0]?.src?.medium ?? imgNotFound
     })
-
     const getImg = () => {
         if (isError) {
             return (

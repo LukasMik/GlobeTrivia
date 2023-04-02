@@ -14,7 +14,6 @@ const CountriesInfoPage = () => {
     if (isError)
         return <div className="mt-24 text-center text-2xl">{(error as Error).message}</div>
 
-
     return (
         <>
             <Header heading='Countries information'
