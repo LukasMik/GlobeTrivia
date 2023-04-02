@@ -1,6 +1,8 @@
-function CountriesQuizPage() {
+import Header from "../Header";
+
+const CountriesQuizPage = () => {
     return (
-        <h1>Countries Quizz</h1>
+        <Header heading='Flag quizz' underHeading='Can you beat the game?' />
     );
 }
 

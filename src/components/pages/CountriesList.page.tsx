@@ -1,6 +1,8 @@
-function CountriesListPage() {
+import Header from "../Header";
+
+const CountriesListPage = () => {
     return (
-        <h1>Countries List</h1>
+        <Header heading='Countries list' underHeading='List of all countries sortable by your preferences' />
     );
 }
 

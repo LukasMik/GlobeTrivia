@@ -4,4 +4,7 @@
 
 @import "navigation";
 @import "text";
-@import "homepage";
+
+body {
+  @apply bg-slate-100
+}

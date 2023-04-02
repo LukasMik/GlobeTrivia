@@ -1,6 +1,8 @@
-function CountriesInfoPage() {
+import Header from "../Header";
+
+const CountriesInfoPage = () => {
     return (
-        <h1>Countries Info</h1>
+        <Header heading='Countries information' underHeading='Find a country and find out some interesting facts' />
     );
 }
 

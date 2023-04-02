@@ -5,7 +5,7 @@ import CountriesInfoPage from "./components/pages/CountriesInfo.page";
 import CountriesQuizPage from "./components/pages/CountriesQuiz.page";
 import CountriesListPage from "./components/pages/CountriesList.page";
 
-function App() {
+const App = () => {
     return (
         <Router>
             <div>

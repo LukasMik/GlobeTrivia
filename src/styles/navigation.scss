@@ -5,9 +5,11 @@
     li {
       @apply w-36 text-center;
     }
+
     & li:first-child {
       @apply hidden
     }
+
     a {
       @apply transform hover:scale-110 transition-all hover:font-bold;
     }
@@ -20,8 +22,13 @@
     @apply ml-auto flex gap-8;
     li {
       @apply underline-offset-4 underline;
+
       a.active {
         @apply font-bold
+      }
+
+      a {
+        @apply transform transition-all hover:font-bold;
       }
     }
   }
