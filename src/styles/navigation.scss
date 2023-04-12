@@ -1,5 +1,5 @@
 .nav-home-page {
-  @apply absolute top-1/2 w-full flex items-center justify-center z-10;
+  @apply absolute top-1/2 w-full flex items-center justify-center z-50;
   ul {
     @apply flex items-center justify-center w-1/2 gap-8;
     li {
@@ -17,7 +17,7 @@
 }
 
 .nav-default {
-  @apply flex p-8;
+  @apply flex p-8 relative z-50;
   ul {
     @apply ml-auto flex gap-8;
     li {
@@ -31,5 +31,8 @@
         @apply transform transition-all hover:font-bold;
       }
     }
+  }
+  &--light {
+    @apply text-gray-300
   }
 }

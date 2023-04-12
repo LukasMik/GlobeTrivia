@@ -1,33 +1,100 @@
-import Header from "../Header";
+import { useCountryContext } from "../../contexts/countryContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
+import React, { useState } from "react";
+import useCountryImageAPI from "../../hooks/useCountryImageAPI";
+import noImage from "../../assets/images/globe-video.gif";
+import { InfoList } from "../CountryDetailPage/InfoList";
+import { Time } from "../CountryDetailPage/Time";
+import { CurrencyConversion } from "../CountryDetailPage/CurrencyConversion";
+import { Weather } from "../CountryDetailPage/Weather";
+import { Map } from "../CountryDetailPage/Map";
 
-const CountriesInfoPage = () => {
-    return (
-        <>
-            <Header heading='Country detail' underHeading='Lorem ipsum dolor sit amet'/>
-            <div className="mx-auto max-w-4xl bg-white rounded-lg shadow-md overflow-hidden my-10">
-                <h1 className="py-4 text-center text-3xl font-bold">Country Information</h1>
-                <img src="https://via.placeholder.com/800x400" alt="Country Photo" className="block w-full" />
-                    <div className="flex flex-wrap justify-center py-4">
-                        <div className="px-4 py-2 text-center w-1/2 sm:w-1/4">
-                            <div className="text-gray-600 uppercase">Country Name</div>
-                            <div className="text-2xl font-bold">United States</div>
-                        </div>
-                        <div className="px-4 py-2 text-center w-1/2 sm:w-1/4">
-                            <div className="text-gray-600 uppercase">Flag</div>
-                            <div className="mt-2"><img src="https://via.placeholder.com/200x133" alt="Flag"/></div>
-                        </div>
-                        <div className="px-4 py-2 text-center w-1/2 sm:w-1/4">
-                            <div className="text-gray-600 uppercase">Currency</div>
-                            <div className="text-2xl font-bold">US Dollar</div>
-                        </div>
-                        <div className="px-4 py-2 text-center w-1/2 sm:w-1/4">
-                            <div className="text-gray-600 uppercase">Area</div>
-                            <div className="text-2xl font-bold">9</div>
-                        </div>
-                    </div>
+type direction = 1 | -1;
+
+const CountryDetailPage = () => {
+  const country = useCountryContext();
+
+  const [activeImg, setActiveImg] = useState(0);
+  const [opacity, setOpacity] = useState(0.65);
+  const [opacityReverse, setOpacityReverse] = useState(0);
+
+  const { data: image } = useCountryImageAPI(country.name.common, 7);
+
+  const bgImage = image?.[activeImg]?.src.large2x ?? noImage;
+  const getActiveImage = (direction: direction) => {
+    if (image) {
+      const imageCount = image.length;
+      setActiveImg((activeImg + direction + imageCount) % imageCount);
+    }
+  };
+  const opacityOnScroll = () => {
+    const maxScrollY: number =
+      document.documentElement.scrollHeight - window.innerHeight;
+    const maxOpacity: number = 0.65;
+    const step: number = maxOpacity / maxScrollY;
+    setOpacity(Math.round((maxOpacity - window.scrollY * step) * 100) / 100);
+    setOpacityReverse(Math.round(window.scrollY * step * 100) / 100);
+  };
+  window.addEventListener("scroll", () => opacityOnScroll());
+
+  return (
+    <>
+      <div className="relative z-20 pt-20 w-11/12 2xl:w-2/3 mx-auto">
+        <h2 className="text-gray-100 text-center md:text-left sm:text-6xl md:text-8xl mb-1 font-bold">
+          {country.name.common}
+        </h2>
+        <h3 className="text-gray-200 md:pl-20 text-2xl md:text-4xl pb-8 text-center md:text-left">
+          {country.region} {country.subregion ? `, ${country.subregion}` : ""}
+        </h3>
+        <div className="lg:flex items-stretch">
+          <div className="mt-12 w-full lg:w-1/3 ">
+            <InfoList />
+          </div>
+          <div className="w-full lg:w-2/3 pl-12 flex flex-col justify-around px-8 mt-12 lg:mt-0">
+            <Time />
+            <div className="flex flex-col md:flex-row gap-8 items-center justify-between mt-8 lg:mt-0">
+              <CurrencyConversion />
+              <Weather />
             </div>
-        </>
-);
-}
+          </div>
+        </div>
+        <Map />
+      </div>
+      <div className="h-screen"></div>
+      <div
+        className="fixed h-full w-screen top-0 flex justify-between"
+        style={{ backgroundColor: `rgba(0, 0, 0, ${opacity})` }}
+      >
+        <div
+          className="h-screen w-48 flex items-center justify-center gradient-left-to-right transition-all sm:text-6xl left-0 z-20 cursor-pointer"
+          onClick={() => getActiveImage(-1)}
+        >
+          <FontAwesomeIcon
+            icon={faChevronLeft}
+            style={{ opacity: `${opacityReverse}` }}
+          />
+        </div>
+        <div
+          className="h-screen w-48 flex items-center justify-center gradient-right-to-left transition-all text-6xl right-0 z-20 cursor-pointer"
+          onClick={() => getActiveImage(+1)}
+        >
+          <FontAwesomeIcon
+            icon={faChevronRight}
+            style={{ opacity: `${opacityReverse}` }}
+          />
+        </div>
+      </div>
+      <img
+        className=" h-screen w-screen top-0 -z-20 object-cover fixed top-0"
+        src={bgImage}
+        alt="Country Image"
+      />
+    </>
+  );
+};
 
-export default CountriesInfoPage;
+export default CountryDetailPage;

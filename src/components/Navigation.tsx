@@ -3,10 +3,21 @@ import '../styles/navigation.scss'
 
 
 const Navigation = () => {
+
     const location = useLocation();
 
+    const navTheme = () => {
+        if (location.pathname.includes('/country-detail/') )
+            return 'nav-default nav-default--light'
+        else if (location.pathname === '/')
+            return 'nav-home-page'
+        else
+            return 'nav-default'
+
+    }
+
     return (
-        <nav className={location.pathname === '/' ? 'nav-home-page' : 'nav-default'}>
+        <nav className={navTheme()}>
             <ul>
                 <li>
                     <NavLink to="/">Home</NavLink>

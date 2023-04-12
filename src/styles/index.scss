@@ -4,7 +4,9 @@
 
 @import "navigation";
 @import "text";
+@import "country-item";
+@import "country-detail";
 
 body {
-  @apply bg-slate-100
+  @apply bg-slate-100 overflow-x-hidden
 }
