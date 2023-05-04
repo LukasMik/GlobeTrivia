@@ -17,7 +17,7 @@ const CountryItem = ({ country }: IProps) => {
             className="w-full h-52 object-cover bg-gray-300"
             alt="Country Photo"
           />
-          <div className="absolute bottom-0 left-0 right-0 p-4 text-white bg-black bg-opacity-50 h-20 group-hover:h-full card-content transition-all duration-200">
+          <div className="absolute bottom-0 left-0 right-0 p-4 text-white bg-black bg-opacity-50 h-20 group-hover:h-full transition-all duration-200">
             <h2 className="text-lg font-bold line-clamp-1 group-hover:line-clamp-4">
               {country.name.common}
             </h2>

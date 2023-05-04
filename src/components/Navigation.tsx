@@ -25,12 +25,12 @@ const Navigation = () => {
                 <li>
                     <NavLink to="/countries-info">Explore Countries</NavLink>
                 </li>
-                <li>
-                    <NavLink to="/countries-quiz">Flag Quizz</NavLink>
-                </li>
-                <li>
-                    <NavLink to="/countries-list">Countries list</NavLink>
-                </li>
+                {/*<li>*/}
+                {/*    <NavLink to="/countries-quiz">Flag Quizz</NavLink>*/}
+                {/*</li>*/}
+                {/*<li>*/}
+                {/*    <NavLink to="/countries-list">Countries list</NavLink>*/}
+                {/*</li>*/}
             </ul>
         </nav>
     );
