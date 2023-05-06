@@ -8,13 +8,13 @@ interface IProps {
 const CountryItem = ({ country }: IProps) => {
   return (
     <NavLink to={`/country-detail/${country.cca2}`}>
-      <div className="w-52 group">
+      <div className="w-full md:w-52 group">
         <div className="relative overflow-hidden m-1 transform hover:scale-105 transition-all rounded-md hover:rounded-xl">
           <img
             src={`https://source.unsplash.com/400x400?${
               country.capital ? country.capital[0] : country.name.common
             }`}
-            className="w-full h-52 object-cover bg-gray-300"
+            className="w-full h-64 md:h-52 object-cover bg-gray-300"
             alt="Country Photo"
           />
           <div className="absolute bottom-0 left-0 right-0 p-4 text-white bg-black bg-opacity-50 h-20 group-hover:h-full transition-all duration-200">

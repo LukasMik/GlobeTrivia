@@ -42,7 +42,7 @@ const ExploreCountriesPage = () => {
         placeholder="Find your country!"
         onQueryChange={onQueryChange}
       />
-      <div className="flex flex-wrap mx-12 justify-center">
+      <div className="flex flex-wrap mx-4 md:mx-12 justify-center">
         {filteredCountries.length === 0 ? (
           <p className="text-center mt-12 text-3xl">No countries found..</p>
         ) : (

@@ -70,7 +70,7 @@ const CountryDetailPage = () => {
         style={{ backgroundColor: `rgba(0, 0, 0, ${opacity})` }}
       >
         <div
-          className="h-screen w-48 flex items-center justify-center gradient-left-to-right transition-all sm:text-6xl left-0 z-20 cursor-pointer"
+          className="h-screen w-20 md:w-48 flex items-center justify-center gradient-left-to-right transition-all text-3xl md:text-6xl left-0 z-20 cursor-pointer"
           onClick={() => getActiveImage(-1)}
         >
           <FontAwesomeIcon
@@ -79,7 +79,7 @@ const CountryDetailPage = () => {
           />
         </div>
         <div
-          className="h-screen w-48 flex items-center justify-center gradient-right-to-left transition-all text-6xl right-0 z-20 cursor-pointer"
+          className="h-screen w-20 md:w-48 flex items-center justify-center gradient-right-to-left transition-all text-3xl md:text-6xl right-0 z-20 cursor-pointer"
           onClick={() => getActiveImage(+1)}
         >
           <FontAwesomeIcon

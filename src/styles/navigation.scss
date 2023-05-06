@@ -1,5 +1,5 @@
 .nav-home-page {
-  @apply absolute top-1/2 w-full flex items-center justify-center z-50;
+  @apply absolute top-1/2 w-full flex items-center justify-center z-50 mt-12;
   ul {
     @apply flex items-center justify-center w-1/2 gap-8;
     li {
